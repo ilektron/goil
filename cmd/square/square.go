@@ -94,7 +94,8 @@ func squareVideo(input string, output string) {
 	cmd := exec.Command("ffmpeg", "-y", "-i", input, "-filter:v", "crop=in_h:in_h", "-c:a", "copy", output)
 	result, err := cmd.CombinedOutput()
 	if err != nil {
-		log.Fatal("Unable to process video: ", string(result), err)
+		log.Printlnl("Unable to process video: ", string(result), err)
+		return
 	}
 	log.Println("Successfully cropped video to " + output)
 }
